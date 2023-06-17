@@ -9,7 +9,15 @@
 <br />
 <a style="color:#ab2020;" href="/Balance/DeleteConfirm/@Model.BalanceId">Delete</a>
 <h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
-<div>Period ID: @Model.PeriodId</div>
-<div>Asset: $@(Model.ChequingAcct + Model.SavingsAcct)</div>
-<div>Liability: $@(Model.RevolvingCrdt + Model.InstalmentCrdt)</div>
-<div>Net: $@(Model.ChequingAcct + Model.SavingsAcct - (Model.RevolvingCrdt + Model.InstalmentCrdt))</div>
+<h3>Assets</h3>
+<div>Chequing Account Balance: $@Model.ChequingAcct</div>
+<div>Savings Account Balance: $@Model.SavingsAcct</div>
+<div><strong>Total: $@(Model.ChequingAcct + Model.SavingsAcct)</strong></div>
+<br />
+<h3>Liabilities</h3>
+<div>Revolving Credit Balance: $@Model.RevolvingCrdt</div>
+<div>Instalment Credit Balance: $@Model.InstalmentCrdt</div>
+<div><strong>Total: $@(Model.RevolvingCrdt + Model.InstalmentCrdt)</strong></div>
+<br />
+<h3>Net Worth</h3>
+<div><strong>Assets less Liabilities: $@(Model.ChequingAcct + Model.SavingsAcct - (Model.RevolvingCrdt + Model.InstalmentCrdt))</strong></div>

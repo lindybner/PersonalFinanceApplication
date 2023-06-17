@@ -9,7 +9,15 @@
 <br />
 <a style="color:#ab2020;" href="/Cashflow/DeleteConfirm/@Model.CashflowId">Delete</a>
 <h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
-<div>Period ID: @Model.PeriodId</div>
-<div>Inflow: $@(Model.PrimaryIncome + Model.MiscIncome)</div>
-<div>Outflow: $@(Model.NecessarySpend + Model.DiscretionarySpend)</div>
-<div>Net: $@(Model.PrimaryIncome + Model.MiscIncome - (Model.NecessarySpend + Model.DiscretionarySpend))</div>
+<h3>Inflow</h3>
+<div>Primary Income: $@Model.PrimaryIncome</div>
+<div>Miscellaneous Income: $@Model.MiscIncome</div>
+<div><strong>Total: $@(Model.PrimaryIncome + Model.MiscIncome)</strong></div>
+<br />
+<h3>Outflow</h3>
+<div>Necessary Expenditure: $@Model.NecessarySpend</div>
+<div>Discretionary Expenditure: $@Model.DiscretionarySpend</div>
+<div><strong>Total: $@(Model.NecessarySpend + Model.DiscretionarySpend)</strong></div>
+<br />
+<h3>Savings</h3>
+<div><strong>Inflow less Outflow: $@(Model.PrimaryIncome + Model.MiscIncome - (Model.NecessarySpend + Model.DiscretionarySpend))</strong></div>
