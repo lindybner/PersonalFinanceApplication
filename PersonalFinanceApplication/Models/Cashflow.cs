@@ -18,10 +18,12 @@ namespace PersonalFinanceApplication.Models
         public virtual Period Period { get; set; }
 
         // Amount of cash infow e.g. primary & miscellaneous income
-        public decimal Inflow { get; set; }
+        public decimal PrimaryIncome { get; set; }
+        public decimal MiscIncome { get; set; }
 
         // Amount of cash outflow e.g. necessary & discretionary spending
-        public decimal Outflow { get; set; }
+        public decimal NecessarySpend { get; set; }
+        public decimal DiscretionarySpend { get; set; }
     }
 
     public class CashflowDto
@@ -30,7 +32,9 @@ namespace PersonalFinanceApplication.Models
         public int PeriodYear { get; set; }
         public int PeriodMonth { get; set; }
         public int PeriodId { get; set; }
-        public decimal Inflow { get; set; }
-        public decimal Outflow { get; set; }
+        public decimal PrimaryIncome { get; set; }
+        public decimal MiscIncome { get; set; }
+        public decimal NecessarySpend { get; set; }
+        public decimal DiscretionarySpend { get; set; }
     }
 }

@@ -26,8 +26,10 @@ namespace PersonalFinanceApplication.Controllers
             Cashflows.ForEach(flow => CashflowDtos.Add(new CashflowDto()
             {
                 CashflowId = flow.CashflowId,
-                Inflow = flow.Inflow,
-                Outflow = flow.Outflow,
+                PrimaryIncome = flow.PrimaryIncome,
+                MiscIncome = flow.MiscIncome,
+                NecessarySpend = flow.NecessarySpend,
+                DiscretionarySpend = flow.DiscretionarySpend,
                 PeriodId = flow.Period.PeriodId,
                 PeriodYear = flow.Period.PeriodYear,
                 PeriodMonth = flow.Period.PeriodMonth
@@ -45,8 +47,10 @@ namespace PersonalFinanceApplication.Controllers
             CashflowDto CashflowDto = new CashflowDto()
             {
                 CashflowId = Cashflow.CashflowId,
-                Inflow = Cashflow.Inflow,
-                Outflow = Cashflow.Outflow,
+                PrimaryIncome = Cashflow.PrimaryIncome,
+                MiscIncome = Cashflow.MiscIncome,
+                NecessarySpend = Cashflow.NecessarySpend,
+                DiscretionarySpend = Cashflow.DiscretionarySpend,
                 PeriodId = Cashflow.Period.PeriodId,
                 PeriodYear = Cashflow.Period.PeriodYear,
                 PeriodMonth = Cashflow.Period.PeriodMonth

@@ -6,9 +6,9 @@
 <h2>Are you sure you want to delete this cashflow record?</h2>
 <a href="/Cashflow/List">Cancel</a>
 <h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
-<div>Inflow: $@Model.Inflow</div>
-<div>Outflow: $@Model.Outflow</div>
-<div>Net: $@(Model.Inflow - Model.Outflow)</div>
+<div>Inflow: $@(Model.PrimaryIncome + Model.MiscIncome)</div>
+<div>Outflow: $@(Model.NecessarySpend + @Model.DiscretionarySpend)</div>
+<div>Net: $@(Model.PrimaryIncome + Model.MiscIncome - (@Model.NecessarySpend + @Model.DiscretionarySpend))</div>
 
 <form action="/Cashflow/Delete/@Model.CashflowId" method="post">
     <input type="submit" value="Delete" />

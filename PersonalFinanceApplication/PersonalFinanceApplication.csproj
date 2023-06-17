@@ -211,6 +211,10 @@
     <Compile Include="Migrations\202306172012093_balance-update.designer.cs">
       <DependentUpon>202306172012093_balance-update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306172032039_cashflow-update.cs" />
+    <Compile Include="Migrations\202306172032039_cashflow-update.designer.cs">
+      <DependentUpon>202306172032039_cashflow-update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Balance.cs" />
@@ -352,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306172012093_balance-update.resx">
       <DependentUpon>202306172012093_balance-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306172032039_cashflow-update.resx">
+      <DependentUpon>202306172032039_cashflow-update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
