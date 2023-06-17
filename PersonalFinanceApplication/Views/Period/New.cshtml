@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Enter New Month</h2>
+
+<form action="/Period/Create" method="post">
+    <div>
+        <label>Year:</label> <input type="number" name="PeriodYear" />
+    </div>
+    <div>
+        <label>Month:</label> <input type="number" name="PeriodMonth" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>

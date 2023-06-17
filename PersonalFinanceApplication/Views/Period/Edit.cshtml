@@ -1,0 +1,23 @@
+﻿@model PersonalFinanceApplication.Models.PeriodDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Month</h2>
+
+<form action="/Period/Update/@Model.PeriodId" method="post">
+    <div style="display:none">
+        @* Pass through period ID *@
+        <input type="text" name="PeriodId" value="@Model.PeriodId" />
+    </div>
+
+    <div>
+        <label>Year:</label> <input type="number" name="PeriodYear" value="@Model.PeriodYear" />
+    </div>
+    <div>
+        <label>Month:</label> <input type="number" name="PeriodMonth" value="@Model.PeriodMonth" />
+    </div>
+    <div>
+        <input type="submit" value="Update Month" />
+    </div>
+</form>

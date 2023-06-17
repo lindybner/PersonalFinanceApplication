@@ -1,0 +1,13 @@
+﻿@model PersonalFinanceApplication.Models.PeriodDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Period/List">Go back</a>
+<br />
+<a href="/Period/Edit/@Model.PeriodId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Period/DeleteConfirm/@Model.PeriodId">Delete</a>
+<h2>Period ID: @Model.PeriodId</h2>
+<div>Year: @Model.PeriodYear</div>
+<div>Month: @Model.PeriodMonth</div>

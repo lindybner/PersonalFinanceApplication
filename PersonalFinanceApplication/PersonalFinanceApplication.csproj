@@ -188,6 +188,8 @@
     <Compile Include="Controllers\CashflowDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PeriodController.cs" />
+    <Compile Include="Controllers\PeriodDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,6 +312,12 @@
     <Content Include="Views\Cashflow\Edit.cshtml" />
     <Content Include="Views\Cashflow\Error.cshtml" />
     <Content Include="Views\Cashflow\List.cshtml" />
+    <Content Include="Views\Period\DeleteConfirm.cshtml" />
+    <Content Include="Views\Period\Details.cshtml" />
+    <Content Include="Views\Period\Edit.cshtml" />
+    <Content Include="Views\Period\Error.cshtml" />
+    <Content Include="Views\Period\List.cshtml" />
+    <Content Include="Views\Period\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
