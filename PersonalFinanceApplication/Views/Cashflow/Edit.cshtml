@@ -8,17 +8,17 @@
 <form action="/Cashflow/Update/@Model.CashflowId" method="post">
     <div style="display:none">
         @* Pass through cashflow ID *@
-        <input type="text" name="BalanceId" value="@Model.CashflowId" />
+        <input type="text" name="CashflowId" value="@Model.CashflowId" />
     </div>
 
     <div>
         <label>Period ID:</label> <input type="number" name="PeriodId" value="@Model.PeriodId" />
     </div>
     <div>
-        <label>Inflow:</label> <input type="number" name="OwnBalance" value="@Model.Inflow"/>
+        <label>Inflow:</label> <input type="number" name="Inflow" value="@Model.Inflow"/>
     </div>
     <div>
-        <label>Outflow:</label> <input type="number" name="OweBalance" value="@Model.Outflow" />
+        <label>Outflow:</label> <input type="number" name="Outflow" value="@Model.Outflow" />
     </div>
     <div>
         <input type="submit" value="Update Cashflow" />
