@@ -18,10 +18,12 @@ namespace PersonalFinanceApplication.Models
         public virtual Period Period { get; set; }
 
         // Balance of assets e.g. chequing & savings accounts
-        public decimal OwnBalance { get; set; }
+        public decimal ChequingAcct { get; set; }
+        public decimal SavingsAcct { get; set; }
 
         // Balance of liabilities e.g. revolving & instalment credit
-        public decimal OweBalance { get; set; }
+        public decimal RevolvingCrdt { get; set; }
+        public decimal InstalmentCrdt { get; set; }
     }
 
     public class BalanceDto
@@ -30,7 +32,9 @@ namespace PersonalFinanceApplication.Models
         public int PeriodYear { get; set; }
         public int PeriodMonth { get; set; }
         public int PeriodId { get; set; }
-        public decimal OwnBalance { get; set; }
-        public decimal OweBalance { get; set; }
+        public decimal ChequingAcct { get; set; }
+        public decimal SavingsAcct { get; set; }
+        public decimal RevolvingCrdt { get; set; }
+        public decimal InstalmentCrdt { get; set; }
     }
 }

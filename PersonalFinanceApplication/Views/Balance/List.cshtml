@@ -9,6 +9,6 @@
 {
     <hr />
     <h3><a href="/Balance/Details/@balance.BalanceId">@balance.PeriodYear-@balance.PeriodMonth</a></h3>
-    <div>Asset: $@balance.OwnBalance</div>
-    <div>Liability: $@balance.OweBalance</div>
+    <div>Asset: $@(balance.ChequingAcct + balance.SavingsAcct)</div>
+    <div>Liability: $@(balance.RevolvingCrdt + balance.InstalmentCrdt)</div>
 }

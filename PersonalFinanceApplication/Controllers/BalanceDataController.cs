@@ -26,8 +26,10 @@ namespace PersonalFinanceApplication.Controllers
             Balances.ForEach(bal => BalanceDtos.Add(new BalanceDto()
             {
                 BalanceId = bal.BalanceId,
-                OwnBalance = bal.OwnBalance,
-                OweBalance = bal.OweBalance,
+                ChequingAcct = bal.ChequingAcct,
+                SavingsAcct = bal.SavingsAcct,
+                RevolvingCrdt = bal.RevolvingCrdt,
+                InstalmentCrdt = bal.InstalmentCrdt,
                 PeriodId = bal.Period.PeriodId,
                 PeriodYear = bal.Period.PeriodYear,
                 PeriodMonth = bal.Period.PeriodMonth
@@ -45,8 +47,10 @@ namespace PersonalFinanceApplication.Controllers
             BalanceDto BalanceDto = new BalanceDto()
             {
                 BalanceId = Balance.BalanceId,
-                OwnBalance = Balance.OwnBalance,
-                OweBalance = Balance.OweBalance,
+                ChequingAcct = Balance.ChequingAcct,
+                SavingsAcct = Balance.SavingsAcct,
+                RevolvingCrdt = Balance.RevolvingCrdt,
+                InstalmentCrdt = Balance.InstalmentCrdt,
                 PeriodId = Balance.Period.PeriodId,
                 PeriodYear = Balance.Period.PeriodYear,
                 PeriodMonth = Balance.Period.PeriodMonth

@@ -13,4 +13,11 @@ namespace PersonalFinanceApplication.Models
         public int PeriodYear { get; set; }
         public int PeriodMonth { get; set; }
     }
+
+    public class PeriodDto
+    {
+        public int PeriodId { get; set; }
+        public int PeriodYear { get; set; }
+        public int PeriodMonth { get; set; }
+    }
 }
