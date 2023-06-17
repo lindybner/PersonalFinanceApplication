@@ -28,6 +28,7 @@ namespace PersonalFinanceApplication.Controllers
                 BalanceId = bal.BalanceId,
                 OwnBalance = bal.OwnBalance,
                 OweBalance = bal.OweBalance,
+                PeriodId = bal.Period.PeriodId,
                 PeriodYear = bal.Period.PeriodYear,
                 PeriodMonth = bal.Period.PeriodMonth
             }));
@@ -46,6 +47,7 @@ namespace PersonalFinanceApplication.Controllers
                 BalanceId = Balance.BalanceId,
                 OwnBalance = Balance.OwnBalance,
                 OweBalance = Balance.OweBalance,
+                PeriodId = Balance.Period.PeriodId,
                 PeriodYear = Balance.Period.PeriodYear,
                 PeriodMonth = Balance.Period.PeriodMonth
             };

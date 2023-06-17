@@ -28,6 +28,7 @@ namespace PersonalFinanceApplication.Controllers
                 CashflowId = flow.CashflowId,
                 Inflow = flow.Inflow,
                 Outflow = flow.Outflow,
+                PeriodId = flow.Period.PeriodId,
                 PeriodYear = flow.Period.PeriodYear,
                 PeriodMonth = flow.Period.PeriodMonth
             }));
@@ -46,6 +47,7 @@ namespace PersonalFinanceApplication.Controllers
                 CashflowId = Cashflow.CashflowId,
                 Inflow = Cashflow.Inflow,
                 Outflow = Cashflow.Outflow,
+                PeriodId = Cashflow.Period.PeriodId,
                 PeriodYear = Cashflow.Period.PeriodYear,
                 PeriodMonth = Cashflow.Period.PeriodMonth
             };

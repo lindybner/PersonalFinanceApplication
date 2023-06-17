@@ -9,10 +9,12 @@ namespace PersonalFinanceApplication.Models
 {
     public class Balance
     {
-        [Key] public int BalanceId { get; set; }
+        [Key]
+        public int BalanceId { get; set; }
 
         // 1 period record corresponds to 1 balance & 1 cashflow record
-        [ForeignKey("Period")] public int PeriodId { get; set; }
+        [ForeignKey("Period")]
+        public int PeriodId { get; set; }
         public virtual Period Period { get; set; }
 
         // Balance of assets e.g. chequing & savings accounts

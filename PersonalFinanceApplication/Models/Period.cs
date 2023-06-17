@@ -8,7 +8,8 @@ namespace PersonalFinanceApplication.Models
 {
     public class Period
     {
-        [Key] public int PeriodId { get; set; }
+        [Key]
+        public int PeriodId { get; set; }
         public int PeriodYear { get; set; }
         public int PeriodMonth { get; set; }
     }
