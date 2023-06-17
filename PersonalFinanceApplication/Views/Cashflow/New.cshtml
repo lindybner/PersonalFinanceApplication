@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Enter New Cashflow</h2>
+
+<form action="/Cashflow/Create" method="post">
+    <div>
+        <label>Period ID:</label> <input type="number" name="PeriodId" />
+    </div>
+    <div>
+        <label>Inflow:</label> <input type="number" name="Inflow" />
+    </div>
+    <div>
+        <label>Outflow:</label> <input type="number" name="Outflow" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>

@@ -18,7 +18,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // GET: api/CashflowData/ListCashflows
         [HttpGet]
-        public IEnumerable<CashflowDto> GetCashflows()
+        public IEnumerable<CashflowDto> ListCashflows()
         {
             List<Cashflow> Cashflows = db.Cashflows.ToList();
             List<CashflowDto> CashflowDtos = new List<CashflowDto>();

@@ -1,0 +1,26 @@
+﻿@model PersonalFinanceApplication.Models.CashflowDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Cashflow</h2>
+
+<form action="/Cashflow/Update/@Model.CashflowId" method="post">
+    <div style="display:none">
+        @* Pass through cashflow ID *@
+        <input type="text" name="BalanceId" value="@Model.CashflowId" />
+    </div>
+
+    <div>
+        <label>Period ID:</label> <input type="number" name="PeriodId" value="@Model.PeriodId" />
+    </div>
+    <div>
+        <label>Inflow:</label> <input type="number" name="OwnBalance" value="@Model.Inflow"/>
+    </div>
+    <div>
+        <label>Outflow:</label> <input type="number" name="OweBalance" value="@Model.Outflow" />
+    </div>
+    <div>
+        <input type="submit" value="Update Cashflow" />
+    </div>
+</form>

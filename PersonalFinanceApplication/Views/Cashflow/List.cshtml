@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PersonalFinanceApplication.Models.CashflowDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Cashflows</h2>
+<a href="/Cashflow/New">Add new cashflow</a>
+@foreach(var cashflow in Model)
+{
+    <hr />
+    <h3><a href="/Cashflow/Details/@cashflow.CashflowId">@cashflow.PeriodYear-@cashflow.PeriodMonth</a></h3>
+    <div>Inflow: $@cashflow.Inflow</div>
+    <div>Outflow: $@cashflow.Outflow</div>
+}
