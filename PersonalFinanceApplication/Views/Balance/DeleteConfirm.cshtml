@@ -1,0 +1,15 @@
+﻿@model PersonalFinanceApplication.Models.BalanceDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this balance record?</h2>
+<a href="/Balance/List">Cancel</a>
+<h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
+<div>Asset: $@Model.OwnBalance</div>
+<div>Liability: $@Model.OweBalance</div>
+<div>Net: $@(Model.OwnBalance - Model.OweBalance)</div>
+
+<form action="/Balance/Delete/@Model.BalanceId" method="post">
+    <input type="submit" value="Delete" />
+</form>

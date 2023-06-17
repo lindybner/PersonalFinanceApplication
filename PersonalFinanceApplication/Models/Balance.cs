@@ -27,6 +27,7 @@ namespace PersonalFinanceApplication.Models
         public int BalanceId { get; set; }
         public int PeriodYear { get; set; }
         public int PeriodMonth { get; set; }
+        public int PeriodId { get; set; }
         public decimal OwnBalance { get; set; }
         public decimal OweBalance { get; set; }
     }

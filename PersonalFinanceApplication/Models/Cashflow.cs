@@ -27,6 +27,7 @@ namespace PersonalFinanceApplication.Models
         public int CashflowId { get; set; }
         public int PeriodYear { get; set; }
         public int PeriodMonth { get; set; }
+        public int PeriodId { get; set; }
         public decimal Inflow { get; set; }
         public decimal Outflow { get; set; }
     }

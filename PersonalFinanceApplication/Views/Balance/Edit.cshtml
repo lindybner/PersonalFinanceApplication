@@ -1,0 +1,26 @@
+﻿@model PersonalFinanceApplication.Models.BalanceDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Balance</h2>
+
+<form action="/Balance/Update/@Model.BalanceId" method="post">
+    <div style="display:none">
+        @* Pass through balance ID *@
+        <input type="text" name="BalanceId" value="@Model.BalanceId" />
+    </div>
+
+    <div>
+        <label>Period ID:</label> <input type="number" name="PeriodId" value="@Model.PeriodId" />
+    </div>
+    <div>
+        <label>Asset:</label> <input type="number" name="OwnBalance" value="@Model.OwnBalance"/>
+    </div>
+    <div>
+        <label>Liability:</label> <input type="number" name="OweBalance" value="@Model.OweBalance" />
+    </div>
+    <div>
+        <input type="submit" value="Update Balance" />
+    </div>
+</form>

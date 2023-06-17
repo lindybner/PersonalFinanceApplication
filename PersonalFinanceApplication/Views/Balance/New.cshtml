@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Enter New Balance</h2>
+
+<form action="/Balance/Create" method="post">
+    <div>
+        <label>Period ID:</label> <input type="number" name="PeriodId" />
+    </div>
+    <div>
+        <label>Asset:</label> <input type="number" name="OwnBalance" />
+    </div>
+    <div>
+        <label>Liability:</label> <input type="number" name="OweBalance" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>

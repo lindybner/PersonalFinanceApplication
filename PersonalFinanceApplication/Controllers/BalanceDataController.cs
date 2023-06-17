@@ -16,7 +16,7 @@ namespace PersonalFinanceApplication.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/BalanceData/ListBalance
+        // GET: api/BalanceData/ListBalances
         [HttpGet]
         public IEnumerable<BalanceDto> ListBalances()
         {

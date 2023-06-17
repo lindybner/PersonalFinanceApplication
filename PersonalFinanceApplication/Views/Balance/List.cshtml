@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PersonalFinanceApplication.Models.BalanceDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Balances</h2>
+<a href="/Balance/New">Add new balance</a>
+@foreach(var balance in Model)
+{
+    <hr />
+    <h3><a href="/Balance/Details/@balance.BalanceId">@balance.PeriodYear-@balance.PeriodMonth</a></h3>
+    <div>Asset: $@balance.OwnBalance</div>
+    <div>Liability: $@balance.OweBalance</div>
+}

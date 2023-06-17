@@ -1,0 +1,14 @@
+﻿@model PersonalFinanceApplication.Models.BalanceDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Balance/List">Go back</a>
+<br />
+<a href="/Balance/Edit/@Model.BalanceId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Balance/DeleteConfirm/@Model.BalanceId">Delete</a>
+<h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
+<div>Asset: $@Model.OwnBalance</div>
+<div>Liability: $@Model.OweBalance</div>
+<div>Net: $@(Model.OwnBalance - Model.OweBalance)</div>
