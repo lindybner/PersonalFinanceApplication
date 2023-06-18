@@ -1,4 +1,5 @@
 ﻿using PersonalFinanceApplication.Models;
+using PersonalFinanceApplication.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace PersonalFinanceApplication.Controllers
         static BalanceController()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44394/api/BalanceData/");
+            client.BaseAddress = new Uri("https://localhost:44394/api/");
         }
 
         // GET: Balance/List
@@ -27,7 +28,7 @@ namespace PersonalFinanceApplication.Controllers
             // Objective: Communicate with balance data API to retrieve list of balances
             // curl https://localhost:44394/api/BalanceData/ListBalances
 
-            string url = "ListBalances";
+            string url = "BalanceData/ListBalances";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<BalanceDto> balances = response.Content.ReadAsAsync<IEnumerable<BalanceDto>>().Result;
 
@@ -40,7 +41,7 @@ namespace PersonalFinanceApplication.Controllers
             // Objective: Communicate with balance data API to retrieve one balance record
             // curl https://localhost:44394/api/BalanceData/FindBalance/{id}
 
-            string url = "FindBalance/" + id;
+            string url = "BalanceData/FindBalance/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             BalanceDto selectedBalance = response.Content.ReadAsAsync<BalanceDto>().Result;
 
@@ -56,7 +57,14 @@ namespace PersonalFinanceApplication.Controllers
         // GET: Balance/New
         public ActionResult New()
         {
-            return View();
+            // info about all periods in system
+            // GET: api/PeriodData/ListPeriods
+
+            string url = "PeriodData/ListPeriods";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<PeriodDto> periodOptions = response.Content.ReadAsAsync<IEnumerable<PeriodDto>>().Result;
+
+            return View(periodOptions);
         }
 
         // POST: Balance/Create
@@ -69,7 +77,7 @@ namespace PersonalFinanceApplication.Controllers
             // Objective: Add new balance record to system using API
             // curl -H "Content-Type:application/json" -d @balance.json https://localhost:44394/api/BalanceData/AddBalance
 
-            string url = "AddBalance";
+            string url = "BalanceData/AddBalance";
 
             string jsonpayload = jss.Serialize(balance);
 
@@ -93,18 +101,28 @@ namespace PersonalFinanceApplication.Controllers
         // GET: Balance/Edit/5
         public ActionResult Edit(int id)
         {
-            string url = "FindBalance/" + id;
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            BalanceDto selectedbalance = response.Content.ReadAsAsync<BalanceDto>().Result;
+            UpdateBalance ViewModel = new UpdateBalance();
 
-            return View(selectedbalance);
+            // existing balanc info
+            string url = "BalanceData/FindBalance/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            BalanceDto SelectedBalance = response.Content.ReadAsAsync<BalanceDto>().Result;
+            ViewModel.SelectedBalance = SelectedBalance;
+
+            // also include all periods to choose from when updating this balance record
+            url = "PeriodData/ListPeriods/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<PeriodDto> PeriodOptions = response.Content.ReadAsAsync<IEnumerable<PeriodDto>>().Result;
+            ViewModel.PeriodOptions = PeriodOptions;
+
+            return View(ViewModel);
         }
 
         // POST: Balance/Update/5
         [HttpPost]
         public ActionResult Update(int id, Balance balance)
         {
-            string url = "UpdateBalance/" + id;
+            string url = "BalanceData/UpdateBalance/" + id;
             string jsonpayload = jss.Serialize(balance);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -123,7 +141,7 @@ namespace PersonalFinanceApplication.Controllers
         // GET: Balance/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "FindBalance/" + id;
+            string url = "BalanceData/FindBalance/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             BalanceDto selectedbalance = response.Content.ReadAsAsync<BalanceDto>().Result;
             return View(selectedbalance);
@@ -133,7 +151,7 @@ namespace PersonalFinanceApplication.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "DeleteBalance/" + id;
+            string url = "BalanceData/DeleteBalance/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;

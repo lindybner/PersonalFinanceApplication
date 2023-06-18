@@ -1,30 +1,37 @@
-﻿@model PersonalFinanceApplication.Models.BalanceDto
+﻿@model PersonalFinanceApplication.Models.ViewModels.UpdateBalance
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Update Balance</h2>
 
-<form action="/Balance/Update/@Model.BalanceId" method="post">
+<form action="/Balance/Update/@Model.SelectedBalance.BalanceId" method="post">
     <div style="display:none">
         @* Pass through balance ID *@
-        <input type="text" name="BalanceId" value="@Model.BalanceId" />
+        <input type="text" name="BalanceId" value="@Model.SelectedBalance.BalanceId" />
     </div>
 
     <div>
-        <label>Period ID:</label> <input type="number" name="PeriodId" value="@Model.PeriodId" />
+        <label>Period:</label>
+        <select name="PeriodId">
+            @foreach (var periods in Model.PeriodOptions)
+            {
+                <option value="@periods.PeriodId">@periods.PeriodYear-@periods.PeriodMonth</option>
+            }
+        </select>
+
     </div>
     <div>
-        <label>Chequing Account:</label> <input type="number" name="ChequingAcct" value="@Model.ChequingAcct" />
+        <label>Chequing Account:</label> <input type="number" name="ChequingAcct" value="@Model.SelectedBalance.ChequingAcct" />
     </div>
     <div>
-        <label>Savings Account:</label> <input type="number" name="SavingsAcct" value="@Model.SavingsAcct" />
+        <label>Savings Account:</label> <input type="number" name="SavingsAcct" value="@Model.SelectedBalance.SavingsAcct" />
     </div>
     <div>
-        <label>Revolving Credit:</label> <input type="number" name="RevolvingCrdt" value="@Model.RevolvingCrdt" />
+        <label>Revolving Credit:</label> <input type="number" name="RevolvingCrdt" value="@Model.SelectedBalance.RevolvingCrdt" />
     </div>
     <div>
-        <label>Instalment Credit:</label> <input type="number" name="InstalmentCrdt" value="@Model.InstalmentCrdt" />
+        <label>Instalment Credit:</label> <input type="number" name="InstalmentCrdt" value="@Model.SelectedBalance.InstalmentCrdt" />
     </div>
     <div>
         <input type="submit" value="Update Balance" />
