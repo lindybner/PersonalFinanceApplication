@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<PersonalFinanceApplication.Models.PeriodDto>
 @{
     ViewBag.Title = "Create";
 }
@@ -7,7 +7,13 @@
 
 <form action="/Cashflow/Create" method="post">
     <div>
-        <label>Period ID:</label> <input type="number" name="PeriodId" />
+        <label>Period:</label>
+        <select name="PeriodId">
+            @foreach (var periods in Model)
+            {
+                <option value="@periods.PeriodId">@periods.PeriodYear-@periods.PeriodMonth</option>
+            }
+        </select>
     </div>
     <div>
         <label>Primary Income:</label> <input type="number" name="PrimaryIncome" />

@@ -103,7 +103,7 @@ namespace PersonalFinanceApplication.Controllers
         {
             UpdateBalance ViewModel = new UpdateBalance();
 
-            // existing balanc info
+            // existing balance info
             string url = "BalanceData/FindBalance/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             BalanceDto SelectedBalance = response.Content.ReadAsAsync<BalanceDto>().Result;
