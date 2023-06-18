@@ -11,5 +11,49 @@
 
 <h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
 <div>Year: @Model.PeriodYear</div>
-<div>Month: @Model.PeriodMonth</div>
-<div>Period ID: @Model.PeriodId</div>
+<div>Month: <span id="monthOut"></span></div>
+
+<script>
+    let monthOut = document.getElementById("monthOut");
+
+    switch (@Model.PeriodMonth) {
+        case 1:
+            monthOut.innerHTML = "January";
+            break;
+        case 2:
+            monthOut.innerHTML = "February";
+            break;
+        case 3:
+            monthOut.innerHTML = "March";
+            break;
+        case 4:
+            monthOut.innerHTML = "April";
+            break;
+        case 5:
+            monthOut.innerHTML = "May";
+            break;
+        case 6:
+            monthOut.innerHTML = "June";
+            break;
+        case 7:
+            monthOut.innerHTML = "July";
+            break;
+        case 8:
+            monthOut.innerHTML = "August";
+            break;
+        case 9:
+            monthOut.innerHTML = "September";
+            break;
+        case 10:
+            monthOut.innerHTML = "October";
+            break;
+        case 11:
+            monthOut.innerHTML = "November";
+            break;
+        case 12:
+            monthOut.innerHTML = "December";
+            break;
+        default:
+            monthOut.innerHTML = "Invalid Month";
+    }
+</script>
