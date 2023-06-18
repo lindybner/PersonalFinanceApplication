@@ -3,21 +3,25 @@
     ViewBag.Title = "Details";
 }
 
-<a href="/Cashflow/List">Go back</a>
-<br />
-<a href="/Cashflow/Edit/@Model.CashflowId">Update</a>
-<br />
-<a style="color:#ab2020;" href="/Cashflow/DeleteConfirm/@Model.CashflowId">Delete</a>
+<nav style="margin-bottom: 20px;">
+    <a href="/Cashflow/List">Go back</a> |
+    <a href="/Cashflow/Edit/@Model.CashflowId">Update</a> |
+    <a style="color:#ab2020;" href="/Cashflow/DeleteConfirm/@Model.CashflowId">Delete</a>
+</nav>
 <h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
-<h3>Inflow</h3>
-<div>Primary Income: $@Model.PrimaryIncome</div>
-<div>Miscellaneous Income: $@Model.MiscIncome</div>
-<div><strong>Total: $@(Model.PrimaryIncome + Model.MiscIncome)</strong></div>
-<br />
-<h3>Outflow</h3>
-<div>Necessary Expenditure: $@Model.NecessarySpend</div>
-<div>Discretionary Expenditure: $@Model.DiscretionarySpend</div>
-<div><strong>Total: $@(Model.NecessarySpend + Model.DiscretionarySpend)</strong></div>
-<br />
-<h3>Savings</h3>
-<div><strong>Inflow less Outflow: $@(Model.PrimaryIncome + Model.MiscIncome - (Model.NecessarySpend + Model.DiscretionarySpend))</strong></div>
+<div style="margin-top: 20px;">
+    <h3>Inflow</h3>
+    <div>Primary Income: $@Model.PrimaryIncome</div>
+    <div>Miscellaneous Income: $@Model.MiscIncome</div>
+    <div><strong>Total: $@(Model.PrimaryIncome + Model.MiscIncome)</strong></div>
+</div>
+<div style="margin-top: 20px;">
+    <h3>Outflow</h3>
+    <div>Necessary Expenditure: $@Model.NecessarySpend</div>
+    <div>Discretionary Expenditure: $@Model.DiscretionarySpend</div>
+    <div><strong>Total: $@(Model.NecessarySpend + Model.DiscretionarySpend)</strong></div>
+</div>
+<div style="margin-top: 20px;">
+    <h3>Savings</h3>
+    <div><strong>Inflow less Outflow: $@(Model.PrimaryIncome + Model.MiscIncome - (Model.NecessarySpend + Model.DiscretionarySpend))</strong></div>
+</div>
