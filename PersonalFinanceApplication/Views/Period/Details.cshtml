@@ -9,12 +9,13 @@
 <br />
 <a style="color:#ab2020;" href="/Period/DeleteConfirm/@Model.PeriodId">Delete</a>
 
-<h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
+<h2>@Model.PeriodYear-<span id="monthFormatted"></span></h2>
 <div>Year: @Model.PeriodYear</div>
 <div>Month: <span id="monthOut"></span></div>
 
 <script>
     let monthOut = document.getElementById("monthOut");
+    let monthFormatted = document.getElementById("monthFormatted");
 
     switch (@Model.PeriodMonth) {
         case 1:
@@ -55,5 +56,9 @@
             break;
         default:
             monthOut.innerHTML = "Invalid Month";
+    }
+
+    if (@Model.PeriodMonth < 10) {
+        monthFormatted.innerHTML = "0" + @Model.PeriodMonth;
     }
 </script>
