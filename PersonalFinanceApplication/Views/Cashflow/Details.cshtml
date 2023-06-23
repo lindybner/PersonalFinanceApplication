@@ -8,7 +8,7 @@
     <a href="/Cashflow/Edit/@Model.CashflowId">Update</a> |
     <a style="color:#ab2020;" href="/Cashflow/DeleteConfirm/@Model.CashflowId">Delete</a>
 </nav>
-<h2>@Model.PeriodYear-@Model.PeriodMonth</h2>
+<h2>@Model.PeriodYear-<span id="monthFormatted"></span></h2>
 <div style="margin-top: 20px;">
     <h3>Inflow</h3>
     <div>Primary Income: $@Model.PrimaryIncome</div>
@@ -25,3 +25,13 @@
     <h3>Savings</h3>
     <div><strong>Inflows less Outflows: $@(Model.PrimaryIncome + Model.MiscIncome - (Model.NecessarySpend + Model.DiscretionarySpend))</strong></div>
 </div>
+
+<script>
+    let monthFormatted = document.getElementById("monthFormatted");
+
+    if (@Model.PeriodMonth < 10) {
+        monthFormatted.innerHTML = "0" + @Model.PeriodMonth;
+    } else {
+        monthFormatted.innerHTML = @Model.PeriodMonth;
+    }
+</script>

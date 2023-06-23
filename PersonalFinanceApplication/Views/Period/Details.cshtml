@@ -1,23 +1,37 @@
-﻿@model PersonalFinanceApplication.Models.PeriodDto
+﻿@model PersonalFinanceApplication.Models.ViewModels.DetailsPeriod
 @{
     ViewBag.Title = "Details";
 }
 
-<a href="/Period/List">Go back</a>
-<br />
-<a href="/Period/Edit/@Model.PeriodId">Update</a>
-<br />
-<a style="color:#ab2020;" href="/Period/DeleteConfirm/@Model.PeriodId">Delete</a>
+<nav style="margin-bottom: 20px;">
+    <a href="/Period/List">Go back</a> |
+    <a href="/Period/Edit/@Model.SelectedPeriod.PeriodId">Update</a> |
+    <a style="color:#ab2020;" href="/Period/DeleteConfirm/@Model.SelectedPeriod.PeriodId">Delete</a>
+</nav>
 
-<h2>@Model.PeriodYear-<span id="monthFormatted"></span></h2>
-<div>Year: @Model.PeriodYear</div>
+<h2>@Model.SelectedPeriod.PeriodYear-<span id="monthFormatted"></span></h2>
+<div>Year: @Model.SelectedPeriod.PeriodYear</div>
 <div>Month: <span id="monthOut"></span></div>
+
+<div style="margin-top: 25px">
+    @foreach(var balance in Model.RelatedBalances)
+            {
+                <a href="/Balance/Details/@balance.BalanceId">View Balance</a>
+            }
+</div>
+
+<div style="margin-top: 25px">
+    @foreach (var cashflow in Model.RelatedCashflows)
+    {
+        <a href="/Cashflow/Details/@cashflow.CashflowId">View Cashflow</a>
+    }
+</div>
 
 <script>
     let monthOut = document.getElementById("monthOut");
     let monthFormatted = document.getElementById("monthFormatted");
 
-    switch (@Model.PeriodMonth) {
+    switch (@Model.SelectedPeriod.PeriodMonth) {
         case 1:
             monthOut.innerHTML = "January";
             break;
@@ -58,7 +72,9 @@
             monthOut.innerHTML = "Invalid Month";
     }
 
-    if (@Model.PeriodMonth < 10) {
-        monthFormatted.innerHTML = "0" + @Model.PeriodMonth;
+    if (@Model.SelectedPeriod.PeriodMonth < 10) {
+        monthFormatted.innerHTML = "0" + @Model.SelectedPeriod.PeriodMonth;
+    } else {
+        monthFormatted.innerHTML = @Model.SelectedPeriod.PeriodMonth;
     }
 </script>

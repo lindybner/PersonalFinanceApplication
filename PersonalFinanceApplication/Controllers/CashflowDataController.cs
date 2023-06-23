@@ -38,6 +38,28 @@ namespace PersonalFinanceApplication.Controllers
             return CashflowDtos;
         }
 
+        // GET: api/CashflowData/ListCashflowsForPeriod/1
+        [HttpGet]
+        public IEnumerable<CashflowDto> ListCashflowsForPeriod(int id)
+        {
+            List<Cashflow> Cashflows = db.Cashflows.Where(c=>c.PeriodId==id).ToList();
+            List<CashflowDto> CashflowDtos = new List<CashflowDto>();
+
+            Cashflows.ForEach(flow => CashflowDtos.Add(new CashflowDto()
+            {
+                CashflowId = flow.CashflowId,
+                PrimaryIncome = flow.PrimaryIncome,
+                MiscIncome = flow.MiscIncome,
+                NecessarySpend = flow.NecessarySpend,
+                DiscretionarySpend = flow.DiscretionarySpend,
+                PeriodId = flow.Period.PeriodId,
+                PeriodYear = flow.Period.PeriodYear,
+                PeriodMonth = flow.Period.PeriodMonth
+            }));
+
+            return CashflowDtos;
+        }
+
         // GET: api/CashflowData/FindCashflow/5
         [ResponseType(typeof(Cashflow))]
         [HttpGet]

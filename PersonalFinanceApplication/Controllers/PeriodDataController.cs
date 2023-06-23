@@ -16,6 +16,12 @@ namespace PersonalFinanceApplication.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// API call that gets all periods from the database periods table
+        /// </summary>
+        /// <returns>
+        /// PeriodId, PeriodYear, PeriodMonth values of all records in database periods table
+        /// </returns>
         // GET: api/PeriodData/ListPeriods
         [HttpGet]
         public IEnumerable<PeriodDto> ListPeriods()
@@ -33,6 +39,13 @@ namespace PersonalFinanceApplication.Controllers
             return PeriodDtos;
         }
 
+        /// <summary>
+        /// API call that looks for a specific period in the periods table identified by the id input
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// PeriodId, PeriodYear & PeriodMonth of specific record identified by id input
+        /// </returns>
         // GET: api/PeriodData/FindPeriod/5
         [ResponseType(typeof(Period))]
         [HttpGet]

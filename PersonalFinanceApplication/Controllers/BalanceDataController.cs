@@ -38,6 +38,28 @@ namespace PersonalFinanceApplication.Controllers
             return BalanceDtos;
         }
 
+        // GET: api/BalanceData/ListBalancesForPeriod/1
+        [HttpGet]
+        public IEnumerable<BalanceDto> ListBalancesForPeriod(int id)
+        {
+            List<Balance> Balances = db.Balances.Where(b=>b.PeriodId==id).ToList();
+            List<BalanceDto> BalanceDtos = new List<BalanceDto>();
+
+            Balances.ForEach(bal => BalanceDtos.Add(new BalanceDto()
+            {
+                BalanceId = bal.BalanceId,
+                ChequingAcct = bal.ChequingAcct,
+                SavingsAcct = bal.SavingsAcct,
+                RevolvingCrdt = bal.RevolvingCrdt,
+                InstalmentCrdt = bal.InstalmentCrdt,
+                PeriodId = bal.Period.PeriodId,
+                PeriodYear = bal.Period.PeriodYear,
+                PeriodMonth = bal.Period.PeriodMonth
+            }));
+
+            return BalanceDtos;
+        }
+
         // GET: api/BalanceData/FindBalance/5
         [ResponseType(typeof(Balance))]
         [HttpGet]
