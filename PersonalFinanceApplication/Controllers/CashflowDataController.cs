@@ -88,6 +88,7 @@ namespace PersonalFinanceApplication.Controllers
         // POST: api/CashflowData/UpdateCashflow/5
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdateCashflow(int id, Cashflow cashflow)
         {
             if (!ModelState.IsValid)
@@ -124,6 +125,7 @@ namespace PersonalFinanceApplication.Controllers
         // POST: api/CashflowData/AddCashflow
         [ResponseType(typeof(Cashflow))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddCashflow(Cashflow cashflow)
         {
             if (!ModelState.IsValid)
@@ -137,9 +139,10 @@ namespace PersonalFinanceApplication.Controllers
             return CreatedAtRoute("DefaultApi", new { id = cashflow.CashflowId }, cashflow);
         }
 
-        // POST: api/CashflowData/5
+        // POST: api/CashflowData/DeleteCashflow/5
         [ResponseType(typeof(Cashflow))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult DeleteCashflow(int id)
         {
             Cashflow cashflow = db.Cashflows.Find(id);

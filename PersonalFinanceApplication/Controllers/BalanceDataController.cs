@@ -88,6 +88,7 @@ namespace PersonalFinanceApplication.Controllers
         // POST: api/BalanceData/UpdateBalance/5
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdateBalance(int id, Balance balance)
         {
             if (!ModelState.IsValid)
@@ -124,6 +125,7 @@ namespace PersonalFinanceApplication.Controllers
         // POST: api/BalanceData/AddBalance
         [ResponseType(typeof(Balance))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddBalance(Balance balance)
         {
             if (!ModelState.IsValid)
@@ -140,6 +142,7 @@ namespace PersonalFinanceApplication.Controllers
         // POST: api/BalanceData/DeleteBalance/5
         [ResponseType(typeof(Balance))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult DeleteBalance(int id)
         {
             Balance balance = db.Balances.Find(id);

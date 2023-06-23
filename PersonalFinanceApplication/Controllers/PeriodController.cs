@@ -19,7 +19,13 @@ namespace PersonalFinanceApplication.Controllers
 
         static PeriodController()
         {
-            client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                //cookies are manually set in RequestHeader
+                UseCookies = false
+            };
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44394/api/");
         }
 
@@ -75,6 +81,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Period/New
+        [Authorize]
         public ActionResult New()
         {
             return View();
@@ -82,6 +89,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Period/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Period period)
         {
             Debug.WriteLine("JSON payload is:");
@@ -112,6 +120,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Period/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             string url = "PeriodData/FindPeriod/" + id;
@@ -123,6 +132,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Period/Update/5
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Period period)
         {
             string url = "PeriodData/UpdatePeriod/" + id;
@@ -142,6 +152,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Period/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "PeriodData/FindPeriod/" + id;
@@ -152,6 +163,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Period/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             string url = "PeriodData/DeletePeriod/" + id;

@@ -18,7 +18,13 @@ namespace PersonalFinanceApplication.Controllers
 
         static BalanceController()
         {
-            client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                //cookies are manually set in RequestHeader
+                UseCookies = false
+            };
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44394/api/");
         }
 
@@ -55,6 +61,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Balance/New
+        [Authorize]
         public ActionResult New()
         {
             // info about all periods in system
@@ -69,6 +76,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Balance/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Balance balance)
         {
             Debug.WriteLine("JSON payload is:");
@@ -99,6 +107,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Balance/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdateBalance ViewModel = new UpdateBalance();
@@ -120,6 +129,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Balance/Update/5
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Balance balance)
         {
             string url = "BalanceData/UpdateBalance/" + id;
@@ -139,6 +149,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Balance/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "BalanceData/FindBalance/" + id;
@@ -149,6 +160,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Balance/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             string url = "BalanceData/DeleteBalance/" + id;

@@ -49,6 +49,7 @@ namespace PersonalFinanceApplication.Controllers
         // GET: api/PeriodData/FindPeriod/5
         [ResponseType(typeof(Period))]
         [HttpGet]
+        [Authorize]
         public IHttpActionResult FindPeriod(int id)
         {
             Period Period = db.Periods.Find(id);
@@ -69,6 +70,7 @@ namespace PersonalFinanceApplication.Controllers
         // POST: api/PeriodData/UpdatePeriod/5
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdatePeriod(int id, Period period)
         {
             if (!ModelState.IsValid)
@@ -105,6 +107,7 @@ namespace PersonalFinanceApplication.Controllers
         // POST: api/PeriodData/AddPeriod
         [ResponseType(typeof(Period))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddPeriod(Period period)
         {
             if (!ModelState.IsValid)
@@ -121,6 +124,7 @@ namespace PersonalFinanceApplication.Controllers
         // DELETE: api/PeriodData/DeletePeriod/5
         [ResponseType(typeof(Period))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult DeletePeriod(int id)
         {
             Period period = db.Periods.Find(id);

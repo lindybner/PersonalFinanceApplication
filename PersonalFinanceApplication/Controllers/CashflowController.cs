@@ -18,7 +18,13 @@ namespace PersonalFinanceApplication.Controllers
         
         static CashflowController()
         {
-            client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                //cookies are manually set in RequestHeader
+                UseCookies = false
+            };
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44394/api/");
         }
 
@@ -55,6 +61,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Cashflow/New
+        [Authorize]
         public ActionResult New()
         {
             // Info about all periods in system
@@ -64,12 +71,11 @@ namespace PersonalFinanceApplication.Controllers
             IEnumerable<PeriodDto> periodOptions = response.Content.ReadAsAsync<IEnumerable<PeriodDto>>().Result;
 
             return View(periodOptions);
-
-            return View();
         }
 
         // POST: Cashflow/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Cashflow cashflow)
         {
             Debug.WriteLine("JSON payload is:");
@@ -100,6 +106,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Cashflow/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdateCashflow ViewModel = new UpdateCashflow();
@@ -121,6 +128,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Cashflow/Update/5
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Cashflow cashflow)
         {
             string url = "CashflowData/UpdateCashflow/" + id;
@@ -140,6 +148,7 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Cashflow/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "CashflowData/FindCashflow/" + id;
@@ -150,6 +159,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // POST: Cashflow/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id, FormCollection collection)
         {
             string url = "CashflowData/DeleteCashflow/" + id;
