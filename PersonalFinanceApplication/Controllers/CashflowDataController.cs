@@ -18,6 +18,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // GET: api/CashflowData/ListCashflows
         [HttpGet]
+        [Authorize]
         public IEnumerable<CashflowDto> ListCashflows()
         {
             List<Cashflow> Cashflows = db.Cashflows.ToList();
@@ -63,6 +64,7 @@ namespace PersonalFinanceApplication.Controllers
         // GET: api/CashflowData/FindCashflow/5
         [ResponseType(typeof(Cashflow))]
         [HttpGet]
+        [Authorize]
         public IHttpActionResult FindCashflow(int id)
         {
             Cashflow Cashflow = db.Cashflows.Find(id);

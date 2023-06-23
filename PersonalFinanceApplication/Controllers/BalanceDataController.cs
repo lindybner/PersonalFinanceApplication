@@ -18,6 +18,7 @@ namespace PersonalFinanceApplication.Controllers
 
         // GET: api/BalanceData/ListBalances
         [HttpGet]
+        [Authorize]
         public IEnumerable<BalanceDto> ListBalances()
         {
             List<Balance> Balances = db.Balances.ToList();
@@ -63,6 +64,7 @@ namespace PersonalFinanceApplication.Controllers
         // GET: api/BalanceData/FindBalance/5
         [ResponseType(typeof(Balance))]
         [HttpGet]
+        [Authorize]
         public IHttpActionResult FindBalance(int id)
         {
             Balance Balance = db.Balances.Find(id);

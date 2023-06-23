@@ -29,9 +29,26 @@ namespace PersonalFinanceApplication.Controllers
             client.BaseAddress = new Uri("https://localhost:44394/api/");
         }
 
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+
+            Debug.WriteLine("Token Submitted Is : " + token);
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
+        }
+
         // GET: Period/List
+        [Authorize]
         public ActionResult List()
         {
+            GetApplicationCookie(); //get token credentials
             // Objetive: Communicate with period data API to retriee list of periods
             // curl https://localhost:44394/api/PeriodData/ListPeriods
 
@@ -43,8 +60,10 @@ namespace PersonalFinanceApplication.Controllers
         }
 
         // GET: Period/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
+            GetApplicationCookie(); //get token credentials
             // Objective: Communicate with period data API to retrieve one period record
             // curl https://localhost:44394/api/PeriodData/FindPeriod/{id}
 
@@ -92,6 +111,7 @@ namespace PersonalFinanceApplication.Controllers
         [Authorize]
         public ActionResult Create(Period period)
         {
+            GetApplicationCookie(); //get token credentials
             Debug.WriteLine("JSON payload is:");
             // Debug.WriteLine(period.PeriodMonth)
 
@@ -135,6 +155,7 @@ namespace PersonalFinanceApplication.Controllers
         [Authorize]
         public ActionResult Update(int id, Period period)
         {
+            GetApplicationCookie(); //get token credentials 
             string url = "PeriodData/UpdatePeriod/" + id;
             string jsonpayload = jss.Serialize(period);
             HttpContent content = new StringContent(jsonpayload);
@@ -166,6 +187,7 @@ namespace PersonalFinanceApplication.Controllers
         [Authorize]
         public ActionResult Delete(int id)
         {
+            GetApplicationCookie(); //get token credentials
             string url = "PeriodData/DeletePeriod/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";

@@ -24,6 +24,7 @@ namespace PersonalFinanceApplication.Controllers
         /// </returns>
         // GET: api/PeriodData/ListPeriods
         [HttpGet]
+        [Authorize]
         public IEnumerable<PeriodDto> ListPeriods()
         {
             List<Period> Periods = db.Periods.ToList();
@@ -49,6 +50,7 @@ namespace PersonalFinanceApplication.Controllers
         // GET: api/PeriodData/FindPeriod/5
         [ResponseType(typeof(Period))]
         [HttpGet]
+        [Authorize]
         public IHttpActionResult FindPeriod(int id)
         {
             Period Period = db.Periods.Find(id);
