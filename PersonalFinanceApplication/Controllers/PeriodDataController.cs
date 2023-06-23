@@ -49,7 +49,6 @@ namespace PersonalFinanceApplication.Controllers
         // GET: api/PeriodData/FindPeriod/5
         [ResponseType(typeof(Period))]
         [HttpGet]
-        [Authorize]
         public IHttpActionResult FindPeriod(int id)
         {
             Period Period = db.Periods.Find(id);
