@@ -1,4 +1,4 @@
-# PersonalFinanceApplication
+# Personal Finance Tracker Web Application
 
 A personal finance web application built using C# and ASP.NET that lets user easily track their personal financial situation in ***just 3 simple steps***!
 
